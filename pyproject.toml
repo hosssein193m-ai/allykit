@@ -1,0 +1,146 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "allykit"
+version = "1.2.0"
+description = "A comprehensive Python toolkit for security engineering, cryptography, web scraping, filesystem auditing, DFIR, command-line automation, Git, PowerShell, and reusable developer utilities."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+
+authors = [
+    { name = "allykit Developer", email = "hossein.moradian.ir@outlook.com" }
+]
+
+keywords = [
+    "security",
+    "cryptography",
+    "hashing",
+    "password",
+    "password-generator",
+    "password-security",
+    "web-scraping",
+    "selenium",
+    "beautifulsoup",
+    "filesystem",
+    "filesystem-audit",
+    "digital-forensics",
+    "dfir",
+    "integrity",
+    "checksum",
+    "metadata",
+    "utilities",
+    "automation",
+    "command-line",
+    "cmd",
+    "powershell",
+    "git",
+    "python",
+    "pip",
+    "terminal",
+    "developer-tools",
+    "devops",
+    "shell",
+    "persian",
+    "iran",
+    "country-data"
+]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: System Administrators",
+    "Intended Audience :: Science/Research",
+
+    "Topic :: Security",
+    "Topic :: Security :: Cryptography",
+
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Internet :: WWW/HTTP :: Indexing/Search",
+
+    "Topic :: System :: Filesystems",
+    "Topic :: System :: Systems Administration",
+    "Topic :: System :: Shells",
+
+    "Topic :: Software Development",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+
+    "Topic :: Utilities",
+
+    "Operating System :: OS Independent",
+
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+
+    "Typing :: Typed"
+]
+
+dependencies = [
+    "requests>=2.31.0",
+    "beautifulsoup4>=4.12.3",
+    "selenium>=4.24.0",
+    "tenacity>=9.0.0",
+    "deepdiff>=8.0.1",
+    "pyautogui>=0.9.54",
+    "pyperclip>=1.9.0"
+]
+
+[project.optional-dependencies]
+
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "black>=24.0",
+    "ruff>=0.6",
+    "mypy>=1.10"
+]
+
+docs = [
+    "mkdocs>=1.6",
+    "mkdocs-material>=9.5"
+]
+
+web = [
+    "selenium>=4.24.0"
+]
+
+all = [
+    "allykit[dev,docs,web]"
+]
+
+[project.urls]
+Homepage = "https://github.com/hosssein193m-ai/"
+Repository = "https://github.com/hosssein193m-ai/allykit"
+Issues = "https://github.com/hosssein193m-ai/allykit/"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = [
+    "allykit*"
+]
+exclude = [
+    "tests*",
+    "examples*",
+    "docs*",
+    "data*"
+]
+
+[tool.setuptools.package-data]
+allykit = [
+    "py.typed",
+    "*.pyi"
+]
