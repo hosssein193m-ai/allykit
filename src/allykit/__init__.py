@@ -85,45 +85,14 @@ from .web_kit.Working_with_code import SoupToDict, extract_structured_data , ext
 from .web_kit.Cookie import Cookie
 
 # ==================== Language & Geography ====================
-from .data_kit.Language import (
-    detect_language,
-    filter_by_language,
-    normalize_digits,
-    is_rtl_char,
-    char_type,
-    to_ascii_approx,
-    is_persian,
-    is_arabic,
-    is_english,
-)
+from .data_kit.Language import *
 
-from .data_kit.country import (
-    get_country_by_code,
-    get_calling_code,
-    get_country_info,
-    search_country,
-    format_phone_number,
-    get_iso_alpha2,
-    get_iso_alpha3,
-    get_continent,
-    get_capital,
-    get_currency,
-)
+from .data_kit.country import *
 
-from .data_kit.IRAN import (
-    get_city_full_info,
-    get_province_of_city,
-    get_city_coords,
-    get_sim_operator,
-    get_car_plate_codes,
-    get_city_population,
-    get_city_phone_code,
-    search_city,
-    get_provinces_by_region,
-)
+from .data_kit.IRAN import *
 
 # ==================== Version & Metadata ====================
-__version__ = "1.2.0"
+__version__ = "1.3"
 __author__ = None
 __license__ = "MIT"
 __status__ = "Alpha"

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "allykit"
-version = "1.2.0"
+version = "1.3.0"
 description = "A comprehensive Python toolkit for security engineering, cryptography, web scraping, filesystem auditing, DFIR, command-line automation, Git, PowerShell, and reusable developer utilities."
 readme = "README.md"
 license = "MIT"
@@ -121,7 +121,7 @@ all = [
 [project.urls]
 Homepage = "https://github.com/hosssein193m-ai/"
 Repository = "https://github.com/hosssein193m-ai/allykit"
-Issues = "https://github.com/hosssein193m-ai/allykit/"
+
 
 [tool.setuptools]
 package-dir = {"" = "src"}

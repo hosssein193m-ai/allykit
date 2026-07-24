@@ -1,12 +1,11 @@
 Metadata-Version: 2.4
 Name: allykit
-Version: 1.2.0
+Version: 1.3.0
 Summary: A comprehensive Python toolkit for security engineering, cryptography, web scraping, filesystem auditing, DFIR, command-line automation, Git, PowerShell, and reusable developer utilities.
 Author-email: allykit Developer <hossein.moradian.ir@outlook.com>
 License-Expression: MIT
 Project-URL: Homepage, https://github.com/hosssein193m-ai/
 Project-URL: Repository, https://github.com/hosssein193m-ai/allykit
-Project-URL: Issues, https://github.com/hosssein193m-ai/allykit/
 Keywords: security,cryptography,hashing,password,password-generator,password-security,web-scraping,selenium,beautifulsoup,filesystem,filesystem-audit,digital-forensics,dfir,integrity,checksum,metadata,utilities,automation,command-line,cmd,powershell,git,python,pip,terminal,developer-tools,devops,shell,persian,iran,country-data
 Classifier: Development Status :: 4 - Beta
 Classifier: Intended Audience :: Developers
@@ -61,6 +60,7 @@ Dynamic: license-file
 # allykit Library Documentation (Full & Updated Version)
 
 The `allykit` library is a comprehensive toolkit designed for security engineers, backend developers, DevOps engineers, system administrators, and digital forensics specialists. It integrates advanced cryptographic operations, automated web interaction, intelligent filesystem auditing, command-line automation, robust password management, language and geographic data, and cookie management into a unified framework.
+In this version, the data kit has been significantly updated for your use.
 
 **Important Note**: Versions prior to 1.1.0 do not meet our standards, so please use the newer versions and enjoy.
 

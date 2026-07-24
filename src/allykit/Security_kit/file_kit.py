@@ -9,7 +9,6 @@ from pathlib import Path
 from datetime import datetime
 from typing import Dict, Union, List
 from allykit.Security_kit.hash_kit import HP
-# از جعبه ابزار عمومی وارد می‌کنیم
 from allykit.Tools_kit.file_tools import information_files_dict, get_permission
 
 ph_S384 = lambda password: HP(password=str(password), algorithm="sha384")

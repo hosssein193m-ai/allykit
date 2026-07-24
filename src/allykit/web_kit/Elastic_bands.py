@@ -18,7 +18,7 @@ except ImportError:
 
 try:
     from allykit.Security_kit.hash_kit import hash_password
-    from allykit.Security_kit.file_kit import write_file , remove_files , dump_file , load_file, read_file
+    from allykit.Tools_kit.file_tools import write_file , remove_files , dump_file , load_file, read_file
     from allykit.web_kit.Get_Code import soup_url, javascript_driver, javascript_pro
     from allykit.web_kit.Communications import fetch_url
     from allykit.web_kit.CChrome import chrome
@@ -449,10 +449,11 @@ class DiskCache:
             self.set(key, soup)
 
         return soup
-        
+    
     def javascript_driver(self, driver: Chrome,
-                        timeout: int = 30,
-                        wait_for_element: tuple = None) -> BeautifulSoup:
+                      text: str,
+                      timeout: int = 30,
+                      wait_for_element: tuple = None) -> BeautifulSoup:
         """
         Cache and retrieve page content using an existing Chrome WebDriver instance.
         
@@ -466,6 +467,10 @@ class DiskCache:
         driver : Chrome
             An active Chrome WebDriver instance that has already navigated
             to the target URL. The driver must be configured and ready.
+        
+        text : str
+            A text string used to generate the cache key. Typically this can be
+            the page URL or another unique identifier.
         
         timeout : int, optional
             Maximum time to wait for element loading (in seconds).
@@ -516,6 +521,7 @@ class DiskCache:
         >>> # Get cached content with wait
         >>> soup = cache.javascript_driver(
         ...     driver=driver,
+        ...     text="https://example.com",
         ...     timeout=20,
         ...     wait_for_element=(By.CLASS_NAME, "loaded")
         ... )
@@ -532,7 +538,7 @@ class DiskCache:
         javascript_pro : Method for advanced JavaScript rendering
         """
 
-        key = f'{self._get_key(hash_password(driver))}.dv.js'
+        key = f'{self._get_key(hash_password(text))}.dv.js'
         soup = self.get(key, False)
         if soup:
             return soup

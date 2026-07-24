@@ -11,6 +11,7 @@ import pyautogui as ui
 import subprocess
 import pyperclip
 from time import sleep
+from allykit.Automobile_kit.ProcessManager import kill_process
 
 class cmd:
     """
@@ -188,3 +189,8 @@ class cmd:
             'Pinging google.com...\\nReply from ...'
         """
         return self.cmd(command, timeout=timeout)
+    
+    @staticmethod       
+    def kill_cmd():
+        return kill_process("cmd.exe")
+

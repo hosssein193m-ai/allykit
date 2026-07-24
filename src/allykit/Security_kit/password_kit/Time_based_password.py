@@ -2,8 +2,8 @@ from .password import generate_password_with_prefix_suffix
 from .Scoring_password import Review_Password
 from allykit.Security_kit.hash_kit import HP
 from allykit.data_kit.Language import PRINTABLE_ASCII
-
 from datetime import datetime, timedelta
+
 
 
 def generate_timed_password(time: str = 'days.10', charset: str = PRINTABLE_ASCII) -> str:
@@ -174,60 +174,6 @@ def wrap_password_with_time(password: str, time: str = 'days.10') -> str:
         prefix=f"--time end {end_time_str}",
         suffix=True
     )
-
-
-def generating_password(password: str = None, time: str = None, charset: str = PRINTABLE_ASCII):
-    """
-    Factory function that generates either a new timed password or wraps an existing one.
-
-    This function serves as a unified interface for password generation, automatically
-    selecting between creating a new random timed password or wrapping an existing
-    password with time-based expiration based on the provided parameters.
-
-    Args:
-        password (str, optional): An existing password to wrap with timestamps.
-                                  If None, a new random password will be generated.
-                                  Defaults to None.
-
-        time (str, optional): Duration string in 'unit.value' format specifying
-                             the validity period. If not provided, defaults to
-                             'days.10' when generating a new password, or will
-                             be passed through to wrap_password_with_time().
-
-        charset (str): Character set to use for generating random passwords.
-                      Only used when password is None and a new password is generated.
-                      Defaults to PRINTABLE_ASCII (all printable ASCII characters).
-
-    Returns:
-        str: A time-stamped password string in the format:
-             "time start {ISO_TIMESTAMP}--{PASSWORD}--time end {ISO_TIMESTAMP}"
-
-    Raises:
-        ValueError: If time parameter format is invalid or if password is invalid.
-
-    Example:
-        >>> # Generate a new timed password
-        >>> pwd = generating_password(time='hours.2')
-        >>> print(pwd)
-        time start 2026-06-10T15:30:00.123456--K#mP9$qL2@--time end 2026-06-10T17:30:00.123456
-
-        >>> # Wrap an existing password
-        >>> pwd = generating_password("my_secret", "days.5")
-        >>> print(pwd)
-        time start 2026-06-10T15:30:00.123456--my_secret--time end 2026-06-15T15:30:00.123456
-
-        >>> # Generate with custom character set
-        >>> pwd = generating_password(charset='0123456789', time='minutes.30')
-        >>> print(pwd)
-        time start 2026-06-10T15:30:00.123456--8347291056--time end 2026-06-10T16:00:00.123456
-
-    See Also:
-        - generate_timed_password(): For generating new random timed passwords
-        - wrap_password_with_time(): For wrapping existing passwords with timestamps
-    """
-    if password is None:
-        return generate_timed_password(time=time, charset=charset)
-    return wrap_password_with_time(password=password, time=time)
 
 
 class Time_Password:
@@ -587,3 +533,122 @@ class Time_Password:
             "end_time": self.end_time(),
             "is_valid": self.is_password_valid()
         }
+    
+
+def generating_password(password: str = None, time: str = 'days.10', charset: str = PRINTABLE_ASCII) -> Time_Password:
+    """
+    Generates or wraps a password with time-based expiration.
+
+    This is a unified factory function that intelligently handles both cases:
+    1. Generating a completely new cryptographically strong random password
+       with embedded timestamps.
+    2. Wrapping an existing user-provided password with timestamps.
+
+    The function acts as a convenient entry point for the time-password
+    functionality, automatically selecting the appropriate underlying method
+    based on whether a password parameter is provided.
+
+    Args:
+        password (str, optional): An existing password to wrap with timestamps.
+            If provided, this password will be preserved and embedded between
+            start and end timestamps.
+
+            If None (default), a new random password will be generated
+            using cryptographically secure methods.
+
+        time (str, optional): Duration string in 'unit.value' format specifying
+            the validity period of the password. Format: '{unit}.{value}'
+
+            Supported units:
+            - 'days' (e.g., 'days.10' for 10 days)
+            - 'hours' (e.g., 'hours.5' for 5 hours)
+            - 'minutes' (e.g., 'minutes.30' for 30 minutes)
+            - 'seconds' (e.g., 'seconds.45' for 45 seconds)
+
+            If None, defaults to 'days.10' (10 days validity).
+
+            Note: When time is None, the default is 'days.10' but this might
+            be overridden by the default in the called functions.
+
+        charset (str, optional): Character set to use for generating the
+            random password portion. Only used when password is None
+            (generating a new password). Must be a string containing all
+            allowed characters.
+
+            Defaults to PRINTABLE_ASCII (all printable ASCII characters).
+
+            When password is provided (wrapping existing password), this
+            parameter is ignored.
+
+    Returns:
+        Time_Password: A Time_Password object that provides comprehensive
+            functionality for managing and validating the time-limited password.
+
+            The returned object includes methods for:
+            - Checking validity (is_password_valid())
+            - Extracting the original password (get_password())
+            - Calculating remaining time (time_remaining())
+            - Generating detailed status reports (status_password())
+            - Converting to dictionary format (to_dict())
+
+    Raises:
+        ValueError: If time parameter format is invalid (missing dot,
+            non-integer value, or unsupported unit).
+        ValueError: If charset is empty or contains no valid characters
+            for generation (only when generating new password).
+        ValueError: If password is None, empty string, or invalid format
+            when wrapping (delegated to wrap_password_with_time).
+
+    Examples:
+        >>> # Generate a completely new timed password (10 days default)
+        >>> tp = generating_password()
+        >>> print(tp.is_password_valid())
+        True
+
+        >>> # Generate a password valid for 2 hours with custom character set
+        >>> tp = generating_password(time='hours.2', charset='0123456789')
+        >>> print(tp.get_password())  # Only digits
+        '8347291056'
+
+        >>> # Wrap an existing password with 7-day expiration
+        >>> tp = generating_password(password='mySecret123', time='days.7')
+        >>> print(tp.start_time())  # Current timestamp
+        '2026-06-10T04:32:32.115989'
+
+        >>> # Wrap with 30-minute expiration
+        >>> tp = generating_password(
+        ...     password='temp_access_key',
+        ...     time='minutes.30'
+        ... )
+        >>> print(tp.time_remaining().total_seconds())
+        1800.0  # Approximately 30 minutes
+
+        >>> # Check status with full details
+        >>> tp = generating_password('api_key_123')
+        >>> status = tp.status_password()
+        >>> print(status['status']['text'])  # 'Active'
+        >>> print(status['Password security']['score'])  # 8
+
+    Use Cases:
+        - Creating temporary API keys or access tokens
+        - Generating time-limited passwords for password reset links
+        - Wrapping existing credentials with expiration dates
+        - Auditing password creation and expiration
+        - Building secure authentication systems with time-based restrictions
+
+    Notes:
+        - The current timestamp (datetime.now()) is used as the start time
+        - When wrapping, the original password remains in plaintext within the
+          returned string. Consider hashing for sensitive applications
+        - The generated structure is: "time start {ISO}--{PASSWORD}--time end {ISO}"
+        - The returned Time_Password object can be used for further validation
+          and management
+
+    See Also:
+        - generate_timed_password(): For creating new random timed passwords
+        - wrap_password_with_time(): For wrapping existing passwords with timestamps
+        - Time_Password class: For comprehensive password management and validation
+    """
+    if password is None:
+        return Time_Password(generate_timed_password(time=time, charset=charset))
+    return Time_Password(wrap_password_with_time(password=password, time=time))

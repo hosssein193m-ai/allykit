@@ -1,6 +1,7 @@
 # allykit Library Documentation (Full & Updated Version)
 
 The `allykit` library is a comprehensive toolkit designed for security engineers, backend developers, DevOps engineers, system administrators, and digital forensics specialists. It integrates advanced cryptographic operations, automated web interaction, intelligent filesystem auditing, command-line automation, robust password management, language and geographic data, and cookie management into a unified framework.
+In this version, the data kit has been significantly updated for your use.
 
 **Important Note**: Versions prior to 1.1.0 do not meet our standards, so please use the newer versions and enjoy.
 
