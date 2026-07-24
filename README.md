@@ -30,7 +30,7 @@ iran_code = ak.COUNTRY_TO_CODE.get("Iran")  # 98
 
 # Fetching web page content
 soup = ak.soup_url("https://example.com")
-print(soup.title.text)
+print(soup.find_all("div"))
 ```
 
 ---
