@@ -258,3 +258,26 @@ This package is released under the MIT License.
 
 **Developed by:** allykit Development Team  
 **Last Updated:** As of version 1.3.0
+
+## 🤝 Corporate Sponsorship
+
+allykit is a comprehensive toolkit that is already being used by individual developers and small teams. We are looking for corporate partners to help sustain and accelerate its development.
+
+### Why Sponsor allykit?
+- Reduce Development Time: Your team can save hundreds of development hours by leveraging allykit's pre-built modules for security, web automation, and system tasks.
+- Support Open Source: Help maintain a high-quality, free tool that benefits the entire Python community.
+- Gain Visibility: Your company logo and link will be prominently displayed in the project's README and documentation, reaching thousands of developers.
+- Feature Prioritization: Sponsors at the corporate level can have a say in the roadmap and prioritization of new features.
+
+### Sponsorship Tiers
+- Bronze ($100/month): Logo and link in the README.
+- Silver ($500/month): Logo in README + dedicated mention in release notes.
+- Gold ($2,000/month): All Silver benefits + priority support and feature consultation.
+
+### Contact Us
+For corporate sponsorship inquiries, please contact us at:  
+📧 @Hossein_12_mm  (My Telegram ID)
+
+### One final point
+I am the sole creator of this module—it was built exclusively by me—so please beware of scams. ✔
+### Thank you for your support. 🙏💝
