@@ -269,11 +269,6 @@ allykit is a comprehensive toolkit that is already being used by individual deve
 - Gain Visibility: Your company logo and link will be prominently displayed in the project's README and documentation, reaching thousands of developers.
 - Feature Prioritization: Sponsors at the corporate level can have a say in the roadmap and prioritization of new features.
 
-### Sponsorship Tiers
-- Bronze ($100/month): Logo and link in the README.
-- Silver ($500/month): Logo in README + dedicated mention in release notes.
-- Gold ($2,000/month): All Silver benefits + priority support and feature consultation.
-
 ### Contact Us
 For corporate sponsorship inquiries, please contact us at:  
 📧 @Hossein_12_mm  (My Telegram ID)
