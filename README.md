@@ -200,7 +200,11 @@ src/allykit/
 ├── Security_kit/
 │   ├── __init__.py
 │   ├── file_kit.py
-│   ├── password_kit.py
+│   ├── password_kit
+│   │   └── __init__.py
+│   │   └── password.py
+│   │   └── Scoring_password.py
+│   │   └── Time_based_password.py
 │   └── hash_kit.py
 ├── web_kit/
 │   ├── __init__.py
@@ -222,18 +226,23 @@ src/allykit/
 │   ├── Language.py
 │   └── country.py
 └── Automobile_kit/
-    ├── __init__.py
-    ├── ProcessManager.py
-    ├── Automobile/
-    │   ├── __init__.py
-    │   ├── Cmd.py
-    │   ├── powershell.py
-    │   └── hybrid.py
-    └── New_automobile/
-        ├── __init__.py
-        ├── file.py
-        ├── python.py
-        └── git.py
+│    ├── __init__.py
+│    ├── ProcessManager.py
+│   ├── Automobile/
+│   │   ├── __init__.py
+│   │   ├── Cmd.py
+│   │   ├── powershell.py
+│   │   └── hybrid.py
+│   └── New_automobile/
+│       ├── __init__.py
+│       ├── file.py
+│       ├── python.py
+│       └── git.py
+└──  Tools_kit
+│   │   └── __init__.py
+│   │   └── file_tools.py
+│   │   └── string_tools.py
+│   │   └── WorkFileJson.py
 ```
 ## Version Summary
 
