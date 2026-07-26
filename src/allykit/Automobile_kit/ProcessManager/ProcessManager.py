@@ -4,8 +4,10 @@ Process Management Utility for Python
 A comprehensive process management class for system process operations
 including killing, terminating, suspending, and monitoring processes.
 """
-
-import psutil
+try:
+    import psutil
+except ImportError:
+    print("pip install psutil")
 from typing import List, Dict, Optional, Union
 import time
 import logging

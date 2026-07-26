@@ -323,14 +323,7 @@ from allykit import (
 iran_code = COUNTRY_TO_CODE.get("Iran")  # 98
 iran_iso = ISO_ALPHA2.get("Iran")  # "IR"
 iran_continent = COUNTRY_CONTINENT.get("Iran")  # "Asia"
-iran_language = COUNTRY_LANGUAGE.get("Iran")  # "Persian"
 
-# Language detection
-from allykit import detect_language_script
-
-text = "Hello دنیا 你好"
-script = detect_language_script(text)
-print(f"Scripts detected: {script}")
 ```
 
 ---
