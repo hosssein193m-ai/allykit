@@ -7,7 +7,10 @@ subprocess execution with GUI automation capabilities for enhanced control.
 """
 
 import os
-import pyautogui as ui
+try:
+    import pyautogui as ui
+except ImportError:
+    print("pip install pyautogui")
 import subprocess
 import pyperclip
 from time import sleep

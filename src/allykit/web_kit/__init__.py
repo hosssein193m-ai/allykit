@@ -140,7 +140,10 @@ try:
 except ImportError:
     logger.error("pip install requests")
     raise
-
+try:
+    from selenium.webdriver.common.by import By
+except ImportError:
+    raise("pip install selenium")
 
 def fix_url(url: str,
             HTTP: bool = True,

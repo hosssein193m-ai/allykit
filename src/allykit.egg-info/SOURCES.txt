@@ -28,13 +28,10 @@ src/allykit/Tools_kit/WorkFileJson.py
 src/allykit/Tools_kit/__init__.py
 src/allykit/Tools_kit/file_tools.py
 src/allykit/Tools_kit/string_tools.py
+src/allykit/data_kit/IRAN.py
 src/allykit/data_kit/Language.py
+src/allykit/data_kit/__init__.py
 src/allykit/data_kit/country.py
-src/allykit/data_kit/IRAN/__init__.py
-src/allykit/data_kit/IRAN/education.py
-src/allykit/data_kit/IRAN/geography.py
-src/allykit/data_kit/IRAN/historical.py
-src/allykit/data_kit/IRAN/telecom.py
 src/allykit/web_kit/CChrome.py
 src/allykit/web_kit/Communications.py
 src/allykit/web_kit/Cookie.py
@@ -43,3 +40,4 @@ src/allykit/web_kit/Get_Code.py
 src/allykit/web_kit/WebAutomation.py
 src/allykit/web_kit/Working_with_code.py
 src/allykit/web_kit/__init__.py
+src/allykit/web_kit/scroll_manager.py

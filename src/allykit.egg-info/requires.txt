@@ -1,10 +1,9 @@
+psutil>=5.9.0
+pyperclip>=0.8.5
+selenium>=4.0.0
 requests>=2.31.0
-beautifulsoup4>=4.12.3
-selenium>=4.24.0
-tenacity>=9.0.0
-deepdiff>=8.0.1
-pyautogui>=0.9.54
-pyperclip>=1.9.0
+tenacity>=8.0.0
+beautifulsoup4>=4.12.0
 
 [all]
 allykit[dev,docs,web]

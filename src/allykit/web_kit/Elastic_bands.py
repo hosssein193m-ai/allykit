@@ -542,8 +542,10 @@ class DiskCache:
         soup = self.get(key, False)
         if soup:
             return soup
-                
-        return javascript_driver(driver, timeout, wait_for_element)
+        
+        soup = javascript_driver(driver, timeout, wait_for_element)
+        self.set(key , soup)
+        return soup
 
     def update(self, url: str, func) -> bool:
         """

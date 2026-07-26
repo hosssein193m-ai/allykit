@@ -1,8 +1,6 @@
 import logging
-from urllib.parse import urlparse, urlunparse, urljoin
 import time
 from typing import Optional, List
-from contextlib import contextmanager
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
