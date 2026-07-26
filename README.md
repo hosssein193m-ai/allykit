@@ -92,8 +92,8 @@ pwd = generate_strong_password(length=16)
 # Timed password (valid for 24 hours)
 timed_pwd = generate_timed_password(time='hours.24')
 tp = Time_Password(timed_pwd)
-print(f"Valid: {tp.is_valid()}")
-print(f"Remaining: {tp.remaining_time()}")
+print(f"Valid: {tp.is_password_valid()}")
+print(f"Remaining: {tp.time_remaining()}")
 
 # Check password strength
 reviewer = Review_Password(pwd)
@@ -192,18 +192,19 @@ driver = chrome(incognito=True, headless=False)
 auto = WebAutomation(driver)
 
 # Navigate and interact
-auto.goto("https://example.com")
+auto.open("https://example.com")
 auto.click("#login-button")
-auto.type("#username", "myuser")
-auto.type("#password", "mypass")
-auto.submit("#login-form")
+auto.send_keys("#username", "myuser")
+auto.send_keys("#password", "mypass")
+
 
 # Cookie management
-from allykit import save_cookies, load_cookies, clear_expired_cookies
+from allykit import Cookie
 
-save_cookies(driver, "cookies.pkl")
-load_cookies(driver, "cookies.pkl")
-clear_expired_cookies(driver)
+cookie = Cookie(driver, "cookies.pkl")
+
+cookie.save_cookies()
+cookie.load_cookies()
 ```
 
 #### Scroll Management (`scroll_manager.py`) 🆕
@@ -358,9 +359,9 @@ info = get_process_info(1234)
 print(f"Name: {info['name']}, CPU: {info['cpu']}%")
 
 # Process manager class
-pm = ProcessManager()
-processes = pm.list_processes()
-chrome_processes = pm.find_processes("chrome")
+pm = ProcessManager(process_name = "chrome")
+processes = pm.kill_all()
+chrome_processes = pm.is_running()
 ```
 
 #### Command Line (`Automobile/Cmd.py`, `powerShell.py`)
@@ -372,9 +373,9 @@ chrome_processes = pm.find_processes("chrome")
 from allykit import cmd, PowerShell
 
 # CMD operations
-cmd.run("dir")
-cmd.open_window()
-cmd.auto_type("echo Hello World")
+cmd.cmd("dir")
+cmd.open_cmd()
+cmd.type_text("echo Hello World")
 
 # PowerShell operations
 ps = PowerShell()
@@ -402,7 +403,6 @@ git.push()
 py = Python()
 py.create_venv("venv")
 py.run_script("app.py")
-py.install_package("requests")
 
 # File operations
 file = File()
@@ -423,15 +423,14 @@ This module provides a reusable foundation layer for other components.
 
 ```python
 from allykit import (
-    read_file, write_file, delete_file, get_file_metadata,
-    str_choice_string, truncate_text, format_thousands,
+    read_file, write_file, remove_file,
+    str_choice_string, truncate, format_thousands,
     WorkFileJson
 )
 
 # File operations
 content = read_file("data.txt")
 write_file("output.txt", "Hello World")
-metadata = get_file_metadata("data.txt")
 
 # String utilities
 random_string = str_choice_string(length=10)
@@ -439,9 +438,9 @@ formatted = format_thousands(1234567)  # "1,234,567"
 
 # JSON file management
 json_file = WorkFileJson("data.json")
-json_file.add({"name": "John", "age": 30})
-json_file.update({"name": "Jane"})
-data = json_file.search({"age": 30})
+json_file.save({"name": "John", "age": 30})
+json_file.update_dict({"name": "Jane"})
+data = json_file.search_in_dict({"age": 30})
 json_file.save()
 ```
 

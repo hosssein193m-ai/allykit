@@ -57,6 +57,8 @@ from .Tools_kit.string_tools import (
     choice_string_yield,
     str_choice_string,
     list_choice_string,
+    truncate,
+    format_thousands
 )
 
 # ==================== Security ====================
