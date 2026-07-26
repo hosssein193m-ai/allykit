@@ -11,6 +11,8 @@ try:
     import pyautogui as ui
 except ImportError:
     print("pip install pyautogui")
+except KeyError as e :
+    print(f"KeyError is pyautogui -> {e}")
 import subprocess
 import pyperclip
 from time import sleep
